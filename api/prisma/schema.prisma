@@ -16,7 +16,7 @@ model User {
   email    String @unique
   password String
 
-  bankAccount  BankAccount[]
+  bankAccounts BankAccount[]
   categories   Category[]
   transactions Transaction[]
 
