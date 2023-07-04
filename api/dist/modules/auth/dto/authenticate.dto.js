@@ -9,25 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthController = void 0;
-const common_1 = require("@nestjs/common");
-const auth_service_1 = require("./auth.service");
-let AuthController = exports.AuthController = class AuthController {
-    constructor(authService) {
-        this.authService = authService;
-    }
-    authenticate() {
-        return 'Authenticate';
-    }
-};
+exports.AuthenticateDto = void 0;
+const class_validator_1 = require("class-validator");
+class AuthenticateDto {
+}
+exports.AuthenticateDto = AuthenticateDto;
 __decorate([
-    (0, common_1.Post)('signin'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], AuthController.prototype, "authenticate", null);
-exports.AuthController = AuthController = __decorate([
-    (0, common_1.Controller)('auth'),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
-], AuthController);
-//# sourceMappingURL=auth.controller.js.map
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsEmail)(),
+    __metadata("design:type", String)
+], AuthenticateDto.prototype, "email", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsStrongPassword)({ minNumbers: 1, minSymbols: 1, minUppercase: 1 }),
+    __metadata("design:type", String)
+], AuthenticateDto.prototype, "password", void 0);
+//# sourceMappingURL=authenticate.dto.js.map
