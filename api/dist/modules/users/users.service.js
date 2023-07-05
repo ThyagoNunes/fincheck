@@ -17,6 +17,10 @@ let UsersService = exports.UsersService = class UsersService {
     constructor(usersRepository) {
         this.usersRepository = usersRepository;
     }
+    async index() {
+        const users = await this.usersRepository.index();
+        return users;
+    }
     async create(createUserDto) {
         const { name, email, password } = createUserDto;
         const emailTaken = await this.usersRepository.findUnique({

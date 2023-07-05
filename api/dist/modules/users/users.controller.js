@@ -20,10 +20,19 @@ let UsersController = exports.UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
+    index() {
+        return this.usersService.index();
+    }
     create(createUserDto) {
         return this.usersService.create(createUserDto);
     }
 };
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "index", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

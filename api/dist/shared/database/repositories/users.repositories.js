@@ -16,6 +16,9 @@ let UsersRepository = exports.UsersRepository = class UsersRepository {
     constructor(prismaService) {
         this.prismaService = prismaService;
     }
+    index() {
+        return this.prismaService.user.findMany();
+    }
     create(createDto) {
         return this.prismaService.user.create(createDto);
     }

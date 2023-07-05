@@ -7,6 +7,12 @@ import { UsersRepository } from 'src/shared/database/repositories/users.reposito
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) { }
 
+  async index() {
+    const users = await this.usersRepository.index();
+
+    return users;
+  }
+
   async create(createUserDto: CreateUserDto) {
     const { name, email, password } = createUserDto;
 
