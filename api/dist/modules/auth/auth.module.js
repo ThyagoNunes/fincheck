@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const auth_controller_1 = require("./auth.controller");
 const jwt_1 = require("@nestjs/jwt");
+const env_1 = require("../../shared/config/env");
 let AuthModule = exports.AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule = __decorate([
@@ -18,7 +19,7 @@ exports.AuthModule = AuthModule = __decorate([
         imports: [
             jwt_1.JwtModule.register({
                 signOptions: { expiresIn: '7d' },
-                secret: 'unsecure_jwt_secret',
+                secret: env_1.env.jwtSecret,
             }),
         ],
         controllers: [auth_controller_1.AuthController],
